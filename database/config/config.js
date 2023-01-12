@@ -1,23 +1,34 @@
 "use strict";
 require('dotenv').config();
-module.exports = {
+module.exports =
+{
     development: {
-      use_env_variable: 'DATABASE_URI_DEV',
+      nodeEnv: process.env.NODE_ENV,
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOST,
+      dialect: "postgres" ,
       define: {
-          timestamps: true,
-          underscored: true,
-          underscoredAll: true,
-          createdAt:'created_at',
-          updatedAt:'updated_at',
-          deletedAt:'deleted_at',
-      },
-      dialectOptions: {
-        useUTC: true,
-      },
-      timezone: 'UTC'
-  },
-  test: {
-      use_env_variable: 'DATABASE_URI_TEST',
+        timestamps: true,
+        underscored: true,
+        underscoredAll: true,
+        createdAt:'created_at',
+        updatedAt:'updated_at',
+        deletedAt:'deleted_at',
+    },
+    dialectOptions: {
+      useUTC: true,
+    },
+    timezone: 'UTC'
+    } ,
+    test: { 
+      nodeEnv: process.env.NODE_ENV,
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOST,
+      dialect: "postgres" ,
       define: {
         timestamps: true,
         underscored: true,
@@ -32,7 +43,12 @@ module.exports = {
       timezone:'UTC'
   },
   production: {
-      use_env_variable: 'DATABASE_URI_PROD',
+      nodeEnv: process.env.NODE_ENV,
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      host: process.env.DB_HOST,
+      dialect: "postgres" ,
       dialectOptions: {
           ssl: {
               require: true,
@@ -50,4 +66,4 @@ module.exports = {
       },
       timezone:'UTC'
   }
-}
+  }

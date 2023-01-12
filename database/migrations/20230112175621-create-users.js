@@ -1,79 +1,78 @@
 'use strict'
-// /** @type {import('sequelize-cli').Migration} */
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const transaction = await queryInterface.sequelize.transaction()
     try {
       await queryInterface.createTable('users', {
-        id: {
+        id: { 
           allowNull: false,
           primaryKey: true,
-          defaultValue: Sequelize.UUIDV4,
-          type: Sequelize.UUID
+          type: Sequelize.UUID  
         },
         firstName: {
-          type: Sequelize.STRING ,
-          allowNull: false ,
-          field: 'first_name' ,
+          allowNull: false,
+          type: Sequelize.STRING,
+          field: 'first_name',
           validate: {
-            min: 3 
+            min: 3
           }
-        },
+        } ,
         lastName: {
-          type: Sequelize.STRING ,
-          allowNull: false ,
+          allowNull: false,
+          type: Sequelize.STRING,
           field: 'last_name' ,
           validate: {
             min: 3
           }
         } ,
-        email: {
-          type: Sequelize.STRING ,
-          allowNull: false ,
-          unique: true ,
-          validate: {
-            isEmail: true
-          }
-        } ,
         userName: {
-          type: Sequelize.STRING ,
           allowNull: false ,
-          unique: true ,
+          unique: true,
+          type: Sequelize.STRING,
+          field: 'user_name',
           validate: {
             min: 3
           }
         } ,
-        password: {
-          type: Sequelize.STRING ,
-          allowNull: false ,
+        email: {
+          allowNull: false,
+          unique: true,
+          type: Sequelize.STRING,
           validate: {
-            min: 6
+            isEmail: true
           }
         } ,
+        password: {
+          allowNull: false,
+          type: Sequelize.STRING
+        },
         emailVerified: {
-          type: Sequelize.DATE
+          type: Sequelize.DATE,
+          field: 'email_verified'
         } ,
         createdAt: {
           allowNull: false,
-          type: Sequelize.DATE
+          type: Sequelize.DATE,
+          field: 'created_at'
         },
         updatedAt: {
           allowNull: false,
-          type: Sequelize.DATE
+          type: Sequelize.DATE,
+          field: 'updated_at'
         }
-      } , {transaction})
+      }, { transaction })
 
       await transaction.commit()
-
     } catch (error) {
       await transaction.rollback()
       throw error
     }
-  } ,
-  down: async (queryInterface , Sequelize) => {
+  },
+  down: async (queryInterface, Sequelize) => {
     const transaction = await queryInterface.sequelize.transaction()
     try {
-      await queryInterface.dropTable('users' , {transaction})
+      await queryInterface.dropTable('users',{ transaction })
       await transaction.commit()
     } catch (error) {
       await transaction.rollback()

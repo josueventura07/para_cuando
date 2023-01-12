@@ -11,14 +11,14 @@ Update your own npm & node is necesary for better work flow, so, before cloning,
 ```bash
 npm install -g npm@latest
 ```
-### About dependencies:
+### Dependencies:
 
 Make sure to install all required dependencies before working, this is simply done by running the comand:
 
 ```bash
 npm install
 ```
-### About syntax conventions:
+### Syntax conventions:
 
 Make sure you have read at least the first part of the [Project Bases](https://academlo.notion.site/Base-del-Proyecto-b54473bef71747369accb2c569b94ce6') document, wich specify notation requirements for naming and object properties calling.
 
@@ -41,4 +41,40 @@ After the prefix we have to give a simple but precise description of our contrib
 git commit -m 'feat: users model added (Mario)'
 ```
 
-##### Of course, for more information we can directly read the whole Notion document on: [Project Bases](https://academlo.notion.site/Base-del-Proyecto-b54473bef71747369accb2c569b94ce6)
+#### Environment variables:
+
+You'll find a `.env.example` file where you can check wich environment variables we are using, its important to remenber than some of them can be used by all of us and some others can't. Please, take your time to correctly fill your own `.env` with than info.
+
+#### Scripts:
+
+To make the job a bit faster the following scripts were added to `package.json`:
+
+
+```bash
+npm run lint-fix 
+```
+Will automatically fix all eslint errors detected
+
+```bash
+npm run migrate
+```
+Will execute all migrations, keep in mind that if you one to make only one migration, you better execute this command instead: 
+
+```bash
+npm sequelize-cli db:migrate --name yourMigrationFileName.js
+```
+
+```bash
+npm run undo-mig
+```
+Will reverse a single migration, if you want to revert the migration of three models, you'll have to run this comand three times. 
+
+###### *If you want to add another `script` to the list make sure to add it first in `package.json`, then make a single commit like this: `git commit -m 'feat: new migration script added (Mario)'`, and finally let us know its function here in the `readme` file. 
+
+#### Migrations and Transactions: 
+
+For most of us this resources may be new, so don't foget to check the related documentation about [Migrations](https://sequelize.org/docs/v6/other-topics/migrations/) and [Transactions](https://sequelize.org/docs/v6/other-topics/transactions/).
+
+Also, you may find a bit tricky to use the configurations suggested in [Project Bases](https://academlo.notion.site/Base-del-Proyecto-b54473bef71747369accb2c569b94ce6). Frecuently checking both documentations will help a lot. 
+
+Finally, for more information we can directly read the whole Notion document on: [Project Bases](https://academlo.notion.site/Base-del-Proyecto-b54473bef71747369accb2c569b94ce6).

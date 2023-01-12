@@ -5,7 +5,6 @@ const helmet = require('helmet')
 require('dotenv').config()
 
 // Files imports
-const db = require('./utils/database')
 
 const app = express()
 const PORT = process.env.PORT || 8000 
@@ -31,22 +30,6 @@ if (process.env.NODE_ENV === 'production') {
 
 //  Accept json & form-urlencoded
 app.use(express.urlencoded({extended: true}))
-
-// Db contection
-db.authenticate()
-  .then(() => {
-    console.log('Database authenticated')
-  })
-  .catch(err => {
-    console.log(err)
-  })
-db.sync()
-  .then(() => {
-    console.log('Database synced')
-  })
-  .catch(err => {
-    console.log(err)
-  })
 
 // Routes
 app.get('/', (req , res) => {
