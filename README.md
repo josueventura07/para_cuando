@@ -13,7 +13,7 @@ npm install -g npm@latest
 ```
 ### About dependencies:
 
-Make sure to install dependencies before working, this is simply done by running the comand:
+Make sure to install all required dependencies before working, this is simply done by running the comand:
 
 ```bash
 npm install
