@@ -1,10 +1,10 @@
-#Basic Information for team work
+# Basic Information for team work
    
 ### About [npm](https://www.npmjs.com/) & [node](https://nodejs.org/en/) versions:
 
 This "Skeleton" was created using npm v9.2.0 & node [v18.13.0](https://nodejs.org/en/).
 
-Update your own npm & node is necesary for better work flow, so, before cloning, merging or fetching the repository, make sure you already have updated npm & node.
+Updating your own npm & node is necesary for better work flow, so, before cloning, merging or fetching the repository, make sure you already have updated npm & node.
 
 ###### npm updating:
 
@@ -13,7 +13,7 @@ npm install -g npm@latest
 ```
 ### Dependencies:
 
-Make sure to install all required dependencies before working, this is simply done by running the comand:
+Make sure to install all required dependencies before working, this is simply done by running this comand:
 
 ```bash
 npm install
@@ -43,7 +43,7 @@ git commit -m 'feat: users model added (Mario)'
 
 #### Environment variables:
 
-You'll find a `.env.example` file where you can check wich environment variables we are using, its important to remenber than some of them can be used by all of us and some others can't. Please, take your time to correctly fill your own `.env` with than info.
+You'll find an `.env.example` file where you can check wich environment variables we are using, its important to remember that some of them can be used by all of us and some others can't. Please, take your time to correctly fill your own `.env` with than info.
 
 #### Scripts:
 
@@ -58,7 +58,7 @@ Will automatically fix all eslint errors detected
 ```bash
 npm run migrate
 ```
-Will execute all migrations, keep in mind that if you one to make only one migration, you better execute this command instead: 
+Will execute all migrations, keep in mind that if you want to make only one migration, you better execute this command instead: 
 
 ```bash
 npm sequelize-cli db:migrate --name yourMigrationFileName.js
