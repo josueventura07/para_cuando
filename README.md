@@ -61,7 +61,7 @@ npm run migrate
 Will execute all migrations, keep in mind that if you want to make only one migration, you better execute this command instead: 
 
 ```bash
-npm sequelize-cli db:migrate --name yourMigrationFileName.js
+npx sequelize-cli db:migrate --name yourMigrationFileName.js
 ```
 
 ```bash
