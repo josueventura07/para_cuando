@@ -1,6 +1,7 @@
 'use strict'
 const uuid = require('uuid')
 const {Op} = require('sequelize')
+const { hashPassword } = require('../../utils/cypto')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
       last_name: 'Muso' ,
       email: 'mems2001code@gmail.com' ,
       user_name: 'mems2001' ,
-      password: 'root'
+      password: hashPassword('root')
     }]
 
     for (let i=1; i<21 ; i++) {
@@ -23,7 +24,7 @@ module.exports = {
         last_name: 'example' ,
         email: `${i}@example.com` ,
         user_name: `${i}Example` ,
-        password: `${i}Example`
+        password: hashPassword(`${i}Example`)
       }
       usersSeeds.push(newSeed)
     }

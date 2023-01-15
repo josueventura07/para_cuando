@@ -53,7 +53,7 @@ module.exports = {
         } ,
         countryId: {
           type: Sequelize.UUID,
-          allowNull: false,
+          // allowNull: false,
           field: 'country_id'
           // Foreign key references pending
         } ,

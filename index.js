@@ -7,7 +7,10 @@ require('dotenv').config()
 // Files imports
 
 const app = express()
-const PORT = process.env.PORT || 8000 
+const PORT = process.env.PORT || 8000
+
+// Routes imports
+const usersRouter = require('./routes/users.routes')
 
 // Cors settings
 const whitelist = ['http://localhost:8000']
@@ -29,6 +32,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //  Accept json & form-urlencoded
+app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 // Routes
@@ -38,6 +42,8 @@ app.get('/', (req , res) => {
     maintenance: false
   })
 })
+
+app.use('/api/v1/users' , usersRouter)
 
 app.listen(PORT, () => {
   console.log(`Server on PORT: ${PORT}`)

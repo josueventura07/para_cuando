@@ -11,12 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Profiles.belongsTo(models.Users , {as: 'profile' , foreignKey: 'user_id'})
-      Profiles.belongsTo(models.Roles , {as: 'profile' , foreignKey: 'role_id'})
+      Profiles.belongsTo(models.Users , {as: 'profileU' , foreignKey: 'user_id'})
+      Profiles.belongsTo(models.Roles , {as: 'profileR' , foreignKey: 'role_id'})
     }
   }
   Profiles.init({
-    id: DataTypes.UUID
+    id: {
+      type: DataTypes.UUID ,
+      primaryKey: true
+    } ,
+    userId: DataTypes.UUID ,
+    roleId: DataTypes.UUID ,
+    imageUrl: DataTypes.UUID ,
+    codePhone: DataTypes.INTEGER ,
+    phone: DataTypes.INTEGER ,
+    countryId: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'Profiles',

@@ -15,19 +15,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Users.init({
-    firstName: DataTypes.STRING
+    firstName: DataTypes.STRING ,
+    lastName: DataTypes.STRING ,
+    userName: DataTypes.STRING ,
+    email: DataTypes.STRING , 
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Users',
     tableName: 'users' ,
-    timestamps: true ,
-    scopes: {
-      no_timestamps: {
-        attributes: {
-          exclude: ['created_at' , 'updated_at']
-        }
-      }
-    }
+    timestamps: false ,
+    // scopes: {
+    //   no_timestamps: {
+    //     attributes: {
+    //       exclude: ['created_at' , 'updated_at']
+    //     }
+    //   }
+    // }
   })
   return Users
 }
