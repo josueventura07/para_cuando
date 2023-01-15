@@ -19,7 +19,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Users',
-    tableName: 'users' 
+    tableName: 'users' ,
+    timestamps: true ,
+    scopes: {
+      no_timestamps: {
+        attributes: {
+          exclude: ['created_at' , 'updated_at']
+        }
+      }
+    }
   })
   return Users
 }
