@@ -19,7 +19,15 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Roles',
-    tableName: 'roles'
+    tableName: 'roles' ,
+    timestamps: true ,
+    scopes: {
+      no_timestamps: {
+        attributes: {
+          exclude: ['created_at' , 'updated_at']
+        }
+      }
+    }
   })
   return Roles
 }

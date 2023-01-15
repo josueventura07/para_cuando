@@ -7,7 +7,14 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction()
 
-    const usersSeeds = []
+    const usersSeeds = [{
+      id: uuid.v4() ,
+      first_name: 'Mario' ,
+      last_name: 'Muso' ,
+      email: 'mems2001code@gmail.com' ,
+      user_name: 'mems2001' ,
+      password: 'root'
+    }]
 
     for (let i=1; i<21 ; i++) {
       const newSeed = {
@@ -34,7 +41,7 @@ module.exports = {
   async down (queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction()
 
-    const userNames = [] 
+    const userNames = ['mems2001'] 
 
     for (let i=1; i<21 ; i++) {
       const user_name = `${i}Example` 
