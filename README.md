@@ -55,10 +55,12 @@ npm run lint-fix
 ```
 Will automatically fix all eslint errors detected
 
+#### Migrations:
+
 ```bash
 npm run migrate
 ```
-Will execute all migrations, keep in mind that if you want to make only one migration, you better execute this command instead: 
+Will execute all migrations, keep in mind that if you want to make a single migration, you better execute this command instead: 
 
 ```bash
 npx sequelize-cli db:migrate --name yourMigrationFileName.js
@@ -67,7 +69,29 @@ npx sequelize-cli db:migrate --name yourMigrationFileName.js
 ```bash
 npm run undo-mig
 ```
-Will reverse a single migration, if you want to revert the migration of three models, you'll have to run this comand three times. 
+Will reverse a single migration, if you want to revert the migration of three models, you'll have to run this comand three times, or execute a "undo-all" commad: 
+
+```bash
+npm run undo-mig-all
+```
+
+This one will revert all migrations done.
+
+#### Seeders:
+
+There will be just two main command for seeders:
+
+```bash
+npm run seed-all
+```
+
+wich migrate all seeds files created, and:
+
+```bash
+npm run undo-seed-all
+```
+
+wich reverts all seeds migrated. You can create or revert seeds one by one with the `sequelize-cli` corresponding commads as describen in [Seeders](https://academlo.notion.site/Seeders-bfcc2c9fc0ee44a68c6f5f9af6af70b4).
 
 ###### *If you want to add another `script` to the list make sure to add it first in `package.json`, then make a single commit like this: `git commit -m 'feat: new migration script added (Mario)'`, and finally let us know its function here in the `readme` file. 
 
