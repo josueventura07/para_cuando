@@ -8,14 +8,10 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction()
 
     try {
-      await queryInterface.bulkInsert('roles' , [
+      await queryInterface.bulkInsert('countries' , [
         {
           id: uuid.v4() ,
-          name: 'admin'
-        } , 
-        {
-          id: uuid.v4() ,
-          name: 'public'
+          name: 'X' // Waiting for decision
         }
       ] , {transaction})
 
@@ -30,9 +26,9 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction()
 
     try {
-      await queryInterface.bulkDelete('roles' , {
+      await queryInterface.bulkDelete('countries' , {
         name: {
-          [Op.or]: ['public' , 'admin']
+          [Op.or] : ['X']
         }
       } , {transaction})
 

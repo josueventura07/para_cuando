@@ -8,14 +8,11 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction()
 
     try {
-      await queryInterface.bulkInsert('roles' , [
+      await queryInterface.bulkInsert('cities' , [
         {
           id: uuid.v4() ,
-          name: 'admin'
-        } , 
-        {
-          id: uuid.v4() ,
-          name: 'public'
+          countryId: '',  // Waiting for Josué
+          name: 'X'
         }
       ] , {transaction})
 
@@ -30,15 +27,15 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction()
 
     try {
-      await queryInterface.bulkDelete('roles' , {
+      await queryInterface.bulkDelete('cities' , {
         name: {
-          [Op.or]: ['public' , 'admin']
+          [Op.or]: ['X']
         }
       } , {transaction})
 
       await transaction.commit()
     } catch (error) {
-      await transaction.rollback()
+      await transaction.rollback() 
       throw error
     }
   }

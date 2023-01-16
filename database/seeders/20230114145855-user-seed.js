@@ -71,7 +71,7 @@ module.exports = {
         user_name: {
           [Op.or]: userNames
         }
-      })
+      } , {transaction})
 
       await transaction.commit()
     } catch (error) {
