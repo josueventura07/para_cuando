@@ -51,7 +51,7 @@ module.exports = {
           type: Sequelize.INTEGER,
           allowNull: false
         } ,
-        countryId: {
+        countryId: { // Waiting for Josué
           type: Sequelize.UUID,
           // allowNull: false,
           field: 'country_id'

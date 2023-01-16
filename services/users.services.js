@@ -40,7 +40,40 @@ const postNewUser = (req , res) => {
   
 }
 
+const getUserById = (req , res) => {
+  const userId = req.params.user_id
+  usersController.findUserById(userId)
+    .then(data => {
+      if (data) {
+        res.status(200).json(data)
+      } else {
+        res.status(404).json({
+          message: 'Invalid ID'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(400).json({
+        message: err.message
+      })
+    })
+}
+
+const getAllUsers = (req , res) => {
+  usersController.findAllUsers()
+    .then(data => {
+      res.status(200).json(data)
+    })
+    .catch(err => {
+      res.status(400).json({
+        message: err.message
+      })
+    })
+}
+
 module.exports = {
   getUserByUserName ,
-  postNewUser
+  postNewUser ,
+  getUserById ,
+  getAllUsers
 }

@@ -16,6 +16,8 @@ class usersControllers {
   
     return data
   }
+
+  // For services <----------------------
   
   async findUsersByUserName(userName) {
     const data = await models.Users.findOne({
@@ -25,6 +27,18 @@ class usersControllers {
     })
   
     return data
+  }
+
+  async findUserById(userId) {
+    return await models.Users.findOne({
+      where: {
+        id: userId
+      }
+    })
+  }
+
+  async findAllUsers() {
+    return await models.Users.findAll()
   }
   
   async createUser(obj) {
