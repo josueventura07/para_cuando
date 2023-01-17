@@ -18,6 +18,14 @@ class usersControllers {
     return data
   }
 
+  async findUserByEmail(email) {
+    return await models.Users.findOne({
+      where: {
+        email
+      }
+    })
+  }
+
   // For services <----------------------
   
   async findUsersByUserName(userName) {

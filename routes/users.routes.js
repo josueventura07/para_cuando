@@ -1,10 +1,11 @@
 const router = require('express').Router()
 const { roleMiddleware } = require('../middlewares/role.middleware')
+const {validateJWT} = require('../middlewares/validate.middleware')
 const usersServices = require('../services/users.services')
 
 router.route('/')
   .post(usersServices.postNewUser)
-  .get(roleMiddleware, usersServices.getAllUsers)
+  .get(validateJWT ,roleMiddleware, usersServices.getAllUsers)
 
 router.get('/user-info' , usersServices.getOwnProfile) // Middleware pending
 
