@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt')
 const generateJWT = require('../utils/generate-jwt')
 const usersServices = require('../controllers/users.controllers')
 const { comparePasswords } = require('../utils/cypto')
